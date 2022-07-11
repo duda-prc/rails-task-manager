@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>My tasks</h1>
+
+
+  <ul>
+    <% @tasks.each do |task| %>
+      <li>
+        <div class="d-flex align-items-center">
+          <% if task.completed %>
+            <i class="fa-regular fa-square-check"></i>
+          <% else %>
+            <i class="fa-regular fa-square"></i>
+          <% end %>
+          <%= link_to task.title, task_path(task), class:'btn center px-1 py-1' %>
+          <%= link_to task_path(task), method: :delete, data: { confirm: "Are you sure?"} do %>
+            <i class="fa-regular fa-trash-can text-dark"></i>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+  <hr>
+
+  <%= link_to new_task_path, class: 'btn d-md-flex align-items-center p-0' do %>
+    <div class="d-flex align-items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#0d6efd" class="bi bi-plus" viewBox="0 0 16 16">
+        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+      </svg>
+      <p class="m-0 text-primary">Create a Task</p>
+    </div>
+  <% end %>
+
+</div>
